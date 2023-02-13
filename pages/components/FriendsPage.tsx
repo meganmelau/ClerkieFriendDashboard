@@ -15,17 +15,10 @@ const StyledFriendsContainer = styled.div`
   align-items: center;
 `;
 
-
-const StyledText = styled.div`
-font-family: 'Inter';
-font-style: normal;
-font-weight: 700;
-font-size: 18px;
-line-height: 22px;`;
-
 const HeaderBox = styled.div`
   background:green;
   box-shadow: 0px 4px 4px rgba(162, 162, 162, 0.1);
+  padding-left: 40px;
 `;
 
 type FriendsPageProps = {

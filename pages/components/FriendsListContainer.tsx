@@ -8,7 +8,6 @@ const StyledFriendsList = styled.div`
   flex-direction: column;
   background-color: pink;
   height: 100vh;
-  margin: 20px;
 `;
 
 type FriendsPageProps = {

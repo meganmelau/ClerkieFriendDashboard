@@ -13,7 +13,7 @@ const Pill = styled.button`
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    margin: 4px 2px;
+    margin: 10px 12px;
     border-radius: 21px;
 `;
 

@@ -6,6 +6,9 @@ import FriendStatusPill from './FriendStatusPill';
 
 
 const StyledFriendRow = styled.div`
+display:flex;
+flex-direction:column;
+justify-content: center;
   width: auto;
   height: 50%;
   background: #FFFFFF;
@@ -22,8 +25,20 @@ font-size: 16px;
 line-height: 19px;
 display: flex;
 align-items: center;
-
 color: #000000;`;
+
+const FlexDiv = styled.div`
+display: flex;
+margin-left: 30px;
+`;
+
+const StyledImg = styled.img`
+margin: 0px 7px;
+display: block;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+`;
 
 type FriendsRowProps = {
   friendData: FriendType;
@@ -33,19 +48,16 @@ const FriendRow: React.FC<FriendsRowProps> = ({friendData}) => {
   const isFriend = friendData.friendStatus;
   return (
     <StyledFriendRow>
-      <div>
-        <div>
+        <FlexDiv>
           <StyledNameHeader>{friendData.firstName + ' ' + friendData.lastName }</StyledNameHeader>
           {/* TODO LOGIC FOR RENDERING PILLS WHEN STATUS IS NOT NONE */}
           {isFriend && <FriendStatusPill friendStatus={friendData.friendStatus}/>}
-        </div>
-        <div>
+        </FlexDiv>
+        <FlexDiv>
           {friendData.email}
-          {/* TODO ADD MARGIN AND SPACING */}
-          <img src="ellipse_icon.png"/>
+          <StyledImg src="ellipse_icon.png"/>
           {friendData.phoneNumber }
-        </div>
-      </div>
+        </FlexDiv>
     </StyledFriendRow>
   )
 }
