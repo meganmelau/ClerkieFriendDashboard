@@ -3,6 +3,9 @@ import styled from "styled-components";
 import { FriendType } from "../data/FriendType";
 import FriendsListContainer from "./FriendsListContainer";
 import FilterButton from "./FilterButton";
+import { componentStrings } from "./strings";
+
+const FriendPageStrings = componentStrings.FriendsPage;
 
 const StyledContainer = styled.div`
   display: flex;
@@ -41,13 +44,13 @@ const FriendsPage: React.FC<FriendsPageProps> = ({ data }) => {
   return (
     <StyledContainer data-test-ids="FriendsPage">
       <HeaderBox>
-        <h2>Friends</h2>
+        <h2>{FriendPageStrings.friends}</h2>
       </HeaderBox>
       <StyledFriendsContainer>
         <FilterRow>
           <FilterButton />
           <DividerImg src="vertical_bar.png" />
-          <div>Add Clear All Option</div>
+          <div>{FriendPageStrings.clear}</div>
         </FilterRow>
         <FriendsListContainer friendsData={data} />
       </StyledFriendsContainer>

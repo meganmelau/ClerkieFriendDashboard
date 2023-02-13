@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { FriendStatus } from "../data/FriendType";
-import { colors } from "./StyleVariables";
+// import { colors } from "./StyleVariables";
 
 /**
  *change the background color dependent on props.friendStatus
@@ -9,7 +9,7 @@ import { colors } from "./StyleVariables";
   blueFont: "#3399FF",
   greenLight: "#DCFFE6",
   greenFont: "#19B444",
-  Not sure why ${colors.lightGreen is working}
+  Not sure why ${colors.lightGreen isn't working}
  */
 const Pill = styled.button`
   background-color: ${(props) =>

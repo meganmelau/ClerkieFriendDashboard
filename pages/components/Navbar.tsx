@@ -13,10 +13,19 @@ const StyledContainer = styled.div`
   height: 100vh;
 `;
 
-const StyledNavRow = styled.div`
+const NavRow = styled.div`
   display: flex;
   flex-direction: row;
+  align-items: center;
   margin: 15px;
+  width: 220px;
+  height: 40px;
+`;
+const StyledNavRow = styled(NavRow)`
+  &:hover {
+    border-radius: 6px;
+    background: ${colors.lightGrey};
+  }
 `;
 
 const StyledNavHeaderText = styled.div`
@@ -43,26 +52,26 @@ const StyledDiv = styled.div`
 const StyledMenu = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  margin-left: 13px;
 `;
 
 const Navbar = () => {
   return (
     <StyledContainer data-test-ids="Navbar">
       <StyledDiv>
-        <StyledNavRow>
+        <NavRow>
           <img src="clerkie_logo.png" />
           <StyledNavHeaderText>{navbarStrings.clerkieHome}</StyledNavHeaderText>
-        </StyledNavRow>
-        <StyledNavRow>
-          <img src="home_icon.png" />
-          <StyledNavItemsText>{navbarStrings.home}</StyledNavItemsText>
-        </StyledNavRow>
-        <StyledNavRow>
-          <img src="friends_icon.png" />
-          <StyledNavItemsText>{navbarStrings.friends}</StyledNavItemsText>
-        </StyledNavRow>
+        </NavRow>
+        <StyledMenu>
+          <StyledNavRow>
+            <img src="home_icon.png" />
+            <StyledNavItemsText>{navbarStrings.home}</StyledNavItemsText>
+          </StyledNavRow>
+          <StyledNavRow>
+            <img src="friends_icon.png" />
+            <StyledNavItemsText>{navbarStrings.friends}</StyledNavItemsText>
+          </StyledNavRow>
+        </StyledMenu>
       </StyledDiv>
     </StyledContainer>
   );

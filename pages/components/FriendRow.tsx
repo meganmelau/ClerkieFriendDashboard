@@ -18,8 +18,6 @@ const StyledFriendRow = styled.div`
 `;
 
 const StyledNameHeader = styled.div`
-  font-family: "Inter";
-  font-style: normal;
   font-weight: 700;
   font-size: 16px;
   line-height: 19px;
@@ -68,7 +66,6 @@ const FriendRow: React.FC<FriendsRowProps> = ({ friendData }) => {
         <StyledNameHeader>
           {friendData.firstName + " " + friendData.lastName}
         </StyledNameHeader>
-        {/* TODO LOGIC FOR RENDERING PILLS WHEN STATUS IS NOT NONE */}
         {isFriend && (
           <FriendStatusPill friendStatus={friendData.friendStatus} />
         )}
