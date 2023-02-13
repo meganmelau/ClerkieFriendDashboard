@@ -11,8 +11,8 @@ const StyledFriendRow = styled.div`
   justify-content: center;
   width: 1050px;
   height: 114px;
-  background: #ffffff;
-  border: 1px solid #d7d7d7;
+  background: white;
+  border: 1px solid ${colors.mediumGrey};
   border-radius: 6px;
   margin: 15px;
 `;
@@ -25,7 +25,7 @@ const StyledNameHeader = styled.div`
   line-height: 19px;
   display: flex;
   align-items: center;
-  color: #000000;
+  color: black;
 `;
 
 const FlexDiv = styled.div`
@@ -49,8 +49,19 @@ type FriendsRowProps = {
   friendData: FriendType;
 };
 
+// This assumes the data is US format 10 digits and we are adding paranthesis and a hyphen
+const phoneNumberFormatting = (phoneNum: number): string => {
+  var cleaned = ("" + phoneNum).replace(/\D/g, "");
+  var match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);
+  if (match) {
+    return "(" + match[1] + ") " + match[2] + "-" + match[3];
+  }
+  return null;
+};
+
 const FriendRow: React.FC<FriendsRowProps> = ({ friendData }) => {
   const isFriend = friendData.friendStatus != FriendStatus.None;
+
   return (
     <StyledFriendRow>
       <FlexDiv>

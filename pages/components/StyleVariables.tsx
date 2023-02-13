@@ -2,6 +2,7 @@
 export const colors = {
   navyTheme: "#091928",
   lightGrey: "#ABABAB",
+  mediumGrey: "#D7D7D7",
   blueLight: "#DFEFFF",
   blueFont: "#3399FF",
   greenLight: "#DCFFE6",

@@ -1,6 +1,6 @@
 export enum FriendStatus {
   Close = "Close Friend",
-  SuperClose = "Super Cose Friend",
+  SuperClose = "Super Close Friend",
   None = "None",
 }
 
