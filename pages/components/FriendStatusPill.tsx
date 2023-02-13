@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import FriendStatus from "../data/FriendsData";
+import { FriendStatus } from "../data/FriendType";
 
 // change the background color dependent on prop.sfriendStatus
 // blue for close and green for super close
@@ -18,7 +18,7 @@ const Pill = styled.button`
 `;
 
 type FriendStatusPillProps = {
-  friendStatus: typeof FriendStatus;
+  friendStatus: FriendStatus;
 };
 const FriendStatusPill: React.FC<FriendStatusPillProps> = ({
   friendStatus,

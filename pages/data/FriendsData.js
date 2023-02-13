@@ -1,8 +1,4 @@
-export const FriendStatus = {
-    Close: 'Close Friend',
-    SuperClose: 'Super Cose Friend',
-    None: 'None',
-};
+import { FriendStatus } from "./FriendType";
 
 const friends = [
     {

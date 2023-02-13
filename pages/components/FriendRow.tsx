@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { FriendStatus } from "../data/FriendsData";
+import { FriendStatus } from "../data/FriendType";
 import { FriendType } from "../data/FriendType";
 import FriendStatusPill from "./FriendStatusPill";
 import { colors } from "./StyleVariables";
@@ -50,7 +50,7 @@ type FriendsRowProps = {
 };
 
 const FriendRow: React.FC<FriendsRowProps> = ({ friendData }) => {
-  const isFriend = friendData.friendStatus;
+  const isFriend = friendData.friendStatus != FriendStatus.None;
   return (
     <StyledFriendRow>
       <FlexDiv>

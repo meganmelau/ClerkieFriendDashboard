@@ -1,10 +1,14 @@
-import FriendStatus from "./FriendsData";
+export enum FriendStatus {
+  Close = "Close Friend",
+  SuperClose = "Super Cose Friend",
+  None = "None",
+}
 
 export type FriendType = {
-    id: number;
-    firstName: string;
-    lastName: string;
-    friendStatus: typeof FriendStatus;
-    email: string;
-    phoneNumber: number;
+  id: number;
+  firstName: string;
+  lastName: string;
+  friendStatus: FriendStatus;
+  email: string;
+  phoneNumber: number;
 };
