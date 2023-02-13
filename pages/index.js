@@ -1,11 +1,8 @@
 import Head from 'next/head';
-import { Inter } from '@next/font/google';
 import FriendsPage from "../pages/components/FriendsPage/FriendsPage";
 import Navbar from './components/NavBar/Navbar';
 import styled from "styled-components";
 import FriendsData from "./data/FriendsData";
-
-const inter = Inter({ subsets: ['latin'] })
 
 const StyledContainer = styled.body`
 display: flex;
@@ -31,7 +28,6 @@ export default function Home() {
           </StyledContainer>
         </main>
       </body>
-      
     </>
   )
 }
