@@ -4,6 +4,8 @@ import { FriendType } from "../../data/FriendType";
 import FriendsListContainer from "./FriendsListContainer";
 import FilterButton from "../Filter/FilterButton";
 import { componentStrings } from "../strings";
+import FilterMenu from "../Filter/FilterMenu";
+import ClearAllButton from "../Filter/ClearAllButton";
 
 const FriendPageStrings = componentStrings.FriendsPage;
 
@@ -50,7 +52,9 @@ const FriendsPage: React.FC<FriendsPageProps> = ({ data }) => {
         <FilterRow>
           <FilterButton />
           <DividerImg src="vertical_bar.png" />
-          <div>{FriendPageStrings.clear}</div>
+          <ClearAllButton hasFilters={false} />
+          <DividerImg src="vertical_bar.png" />
+          <FilterMenu />
         </FilterRow>
         <FriendsListContainer friendsData={data} />
       </StyledFriendsContainer>
