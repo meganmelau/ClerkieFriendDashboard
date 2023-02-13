@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import { FriendStatus } from "../data/FriendType";
-import { FriendType } from "../data/FriendType";
+import { FriendStatus } from "../../data/FriendType";
+import { FriendType } from "../../data/FriendType";
 import FriendStatusPill from "./FriendStatusPill";
-import { colors } from "./StyleVariables";
+import { colors } from "../StyleVariables";
 
 const StyledFriendRow = styled.div`
   display: flex;

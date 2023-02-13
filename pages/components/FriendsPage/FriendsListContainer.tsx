@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import FriendRow from "./FriendRow";
-import { FriendType } from "../data/FriendType";
+import { FriendType } from "../../data/FriendType";
 
 const StyledFriendsList = styled.div`
   display: flex;

@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { FriendStatus } from "../data/FriendType";
+import { FriendStatus } from "../../data/FriendType";
 // import { colors } from "./StyleVariables";
 
 /**

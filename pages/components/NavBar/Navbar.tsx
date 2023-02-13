@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import { colors } from "./StyleVariables";
-import { componentStrings } from "./strings";
+import { colors } from "../StyleVariables";
+import { componentStrings } from "../strings";
 
 const navbarStrings = componentStrings.NavBar;
 

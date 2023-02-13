@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { colors } from "./StyleVariables";
+import { colors } from "../StyleVariables";
 
 const PillButton = styled.button`
   background: #ffffff;

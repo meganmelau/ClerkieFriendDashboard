@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import { FriendType } from "../data/FriendType";
+import { FriendType } from "../../data/FriendType";
 import FriendsListContainer from "./FriendsListContainer";
-import FilterButton from "./FilterButton";
-import { componentStrings } from "./strings";
+import FilterButton from "../Filter/FilterButton";
+import { componentStrings } from "../strings";
 
 const FriendPageStrings = componentStrings.FriendsPage;
 
