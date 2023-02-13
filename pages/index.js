@@ -10,7 +10,9 @@ import FriendsData from "./data/FriendsData"
 const inter = Inter({ subsets: ['latin'] })
 
 const StyledContainer = styled.body`
-  background-color: pink;
+display: flex;
+justify-content: flex-start;
+  background-color: yellow;
   overflow: hidden;
     height: 100vh;
 `;
@@ -25,9 +27,11 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <body>
-      <Navbar/>
         <main >
-          <FriendsPage data={FriendsData}/>
+          <StyledContainer>
+            <Navbar/>
+            <FriendsPage data={FriendsData}/>
+          </StyledContainer>
         </main>
       </body>
       

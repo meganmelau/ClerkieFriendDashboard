@@ -4,9 +4,11 @@ import FriendRow from './FriendRow';
 import { FriendType } from '../data/FriendType';
 
 const StyledFriendsList = styled.div`
+  display: flex;
+  flex-direction: column;
   background-color: pink;
-  width: 100%;
   height: 100vh;
+  margin: 20px;
 `;
 
 type FriendsPageProps = {
