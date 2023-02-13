@@ -12,7 +12,6 @@ const inter = Inter({ subsets: ['latin'] })
 const StyledContainer = styled.body`
 display: flex;
 justify-content: flex-start;
-  background-color: yellow;
   overflow: hidden;
     height: 100vh;
 `;

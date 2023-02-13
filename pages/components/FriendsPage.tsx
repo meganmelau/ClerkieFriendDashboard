@@ -1,12 +1,12 @@
-import React from 'react';
+import React from "react";
 import styled from "styled-components";
-import { FriendType } from '../data/FriendType';
-import FriendsListContainer from './FriendsListContainer';
+import { FriendType } from "../data/FriendType";
+import FriendsListContainer from "./FriendsListContainer";
+import FilterButton from "./FilterButton";
 
 const StyledContainer = styled.div`
   display: flex;
   flex-direction: column;
-  background-color: blue;
   flex-grow: 1;
   height: 100vh;
 `;
@@ -16,29 +16,43 @@ const StyledFriendsContainer = styled.div`
 `;
 
 const HeaderBox = styled.div`
-  background:green;
   box-shadow: 0px 4px 4px rgba(162, 162, 162, 0.1);
   padding-left: 40px;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 22px;
+`;
+
+const FilterRow = styled.div`
+  display: flex;
+  align-items: center;
+  margin: 15px;
+`;
+
+const DividerImg = styled.img`
+  margin: 0px 15px;
 `;
 
 type FriendsPageProps = {
   data: FriendType[];
-}
+};
 
-const FriendsPage: React.FC<FriendsPageProps> = ({data}) => {
+const FriendsPage: React.FC<FriendsPageProps> = ({ data }) => {
   return (
     <StyledContainer data-test-ids="FriendsPage">
-      {/* <StyledText>Friends</StyledText> */}
       <HeaderBox>
         <h2>Friends</h2>
       </HeaderBox>
-      <div>Add Filter Icon</div>
-      <div>Add Clear All Option</div>
       <StyledFriendsContainer>
-        <FriendsListContainer friendsData={data}/>
+        <FilterRow>
+          <FilterButton />
+          <DividerImg src="vertical_bar.png" />
+          <div>Add Clear All Option</div>
+        </FilterRow>
+        <FriendsListContainer friendsData={data} />
       </StyledFriendsContainer>
     </StyledContainer>
-  )
-}
+  );
+};
 
 export default FriendsPage;
