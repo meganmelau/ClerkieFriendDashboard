@@ -18,7 +18,7 @@ const FriendsListContainer: React.FC<FriendsPageProps> = ({ friendsData }) => {
     <StyledFriendsList>
       <div>
         {friendsData.map((friend) => {
-          return <FriendRow friendData={friend} />;
+          return <FriendRow friendData={friend} key={friend.id} />;
         })}
       </div>
     </StyledFriendsList>
