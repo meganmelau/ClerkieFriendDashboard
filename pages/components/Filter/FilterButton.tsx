@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { colors } from "../StyleVariables";
 
 const PillButton = styled.button`
-  background: #ffffff;
+  background: ${(props) => (props.isOpen ? "#424242" : "#FFFFFF")};
   border: 1px solid ${colors.lightGrey};
   border-radius: 30px;
   width: 59px;
@@ -14,9 +14,13 @@ const FilterImg = styled.img`
   object-fit: contain;
 `;
 
-const FilterButton = () => {
+type FilterButtonProps = {
+  onClick: () => void;
+  isOpen: boolean;
+};
+const FilterButton: React.FC<FilterButtonProps> = ({ onClick, isOpen }) => {
   return (
-    <PillButton>
+    <PillButton onClick={onClick} isOpen={isOpen}>
       <FilterImg src="filter_icon.png" />
     </PillButton>
   );

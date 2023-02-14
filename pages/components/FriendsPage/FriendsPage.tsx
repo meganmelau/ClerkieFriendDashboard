@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { FriendType } from "../../data/FriendType";
 import FriendsListContainer from "./FriendsListContainer";
@@ -43,6 +43,12 @@ type FriendsPageProps = {
 };
 
 const FriendsPage: React.FC<FriendsPageProps> = ({ data }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const HandleFilter = () => {
+    return setIsOpen(!isOpen);
+  };
+
   return (
     <StyledContainer data-test-ids="FriendsPage">
       <HeaderBox>
@@ -50,11 +56,12 @@ const FriendsPage: React.FC<FriendsPageProps> = ({ data }) => {
       </HeaderBox>
       <StyledFriendsContainer>
         <FilterRow>
-          <FilterButton />
+          <div>
+            <FilterButton onClick={HandleFilter} isOpen={isOpen} />
+            {isOpen && <FilterMenu />}
+          </div>
           <DividerImg src="vertical_bar.png" />
           <ClearAllButton hasFilters={false} />
-          <DividerImg src="vertical_bar.png" />
-          <FilterMenu />
         </FilterRow>
         <FriendsListContainer friendsData={data} />
       </StyledFriendsContainer>
