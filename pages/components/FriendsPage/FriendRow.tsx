@@ -48,13 +48,11 @@ type FriendsRowProps = {
 };
 
 // This assumes the data is US format 10 digits and we are adding paranthesis and a hyphen
-const phoneNumberFormatting = (phoneNum: number): string => {
-  var cleaned = ("" + phoneNum).replace(/\D/g, "");
-  var match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);
-  if (match) {
-    return "(" + match[1] + ") " + match[2] + "-" + match[3];
-  }
-  return null;
+const phoneNumberFormatting = (phoneNum: string) => {
+  const area = phoneNum.substr(0, 3);
+  var pre = phoneNum.substr(3, 3);
+  var tel = phoneNum.substr(6, 4);
+  return "(" + area + ") " + pre + "-" + tel;
 };
 
 const FriendRow: React.FC<FriendsRowProps> = ({ friendData }) => {
@@ -73,7 +71,7 @@ const FriendRow: React.FC<FriendsRowProps> = ({ friendData }) => {
       <SubHeadingDiv>
         {friendData.email}
         <StyledImg src="ellipse_icon.png" />
-        {friendData.phoneNumber}
+        {phoneNumberFormatting(friendData.phoneNumber)}
       </SubHeadingDiv>
     </StyledFriendRow>
   );

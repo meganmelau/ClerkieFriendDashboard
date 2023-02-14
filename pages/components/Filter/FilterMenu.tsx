@@ -4,11 +4,7 @@ import { colors } from "../StyleVariables";
 import { FriendStatus } from "../../data/FriendType";
 import ClearAllButton from "./ClearAllButton";
 
-const Menu = styled.div`
-  width: 320px;
-  height: 286px;
-  left: 560px;
-  top: 173px;
+const Menu = styled.div`=
   background: white;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   border-radius: 6px;
@@ -21,7 +17,10 @@ const ApplyButton = styled.button`
   border: 1px solid ${colors.darkGrey};
   width: 95%;
   height: 45px;
-  margin-top: 10px;
+  margin-bottom: 10px;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19px;
 `;
 
 const FlexContainer = styled.div`
@@ -46,8 +45,8 @@ const FilterHeaderContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 90%;
-  margin: 0px 10px;
+  width: 100%;
+  margin: 10px;
 `;
 
 const Label = styled.div`
@@ -55,14 +54,20 @@ const Label = styled.div`
   font-size: 14px;
   line-height: 17px;
   color: #686868;
+  margin: 25px;
 `;
 
 const OptionsText = styled.div`
+  display: flex;
   font-weight: 600;
   font-size: 16px;
   line-height: 19px;
   color: #424242;
   width: 100%;
+  padding-right: 100px;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19px;
 `;
 
 const OptionsContainer = styled.div`
@@ -72,38 +77,55 @@ const OptionsContainer = styled.div`
   align-items: center;
   width: 100%;
 `;
+const OptionsDiv = styled.div`
+  display: flex;
+  margin: 0px 25px 25px 25px;
+`;
+const MenuHeader = styled.div`
+  font-weight: 600;
+  font-size: 16px;
+  color: #424242;
+`;
+
+const CloseIcon = styled.img`
+  padding-top: 5px;
+`;
 
 // Cleanup: remove the type none and change to accept null so don't need to filter
 const FilterMenu = () => {
   const friendStatusArr = Object.values(FriendStatus).filter(
     (friendStat) => friendStat != FriendStatus.None
   );
+
   return (
     <Menu>
       <FlexContainer>
         <FilterHeaderContainer>
           <ClearAllButton hasFilters={false} />
-          <h3>Filter</h3>
+          <MenuHeader>Filter</MenuHeader>
           <CloseButton>
-            <img src="close_icon.png" />
+            <CloseIcon src="close_icon.png" />
           </CloseButton>
         </FilterHeaderContainer>
-
         <Divider />
         <OptionsContainer>
-          <Label>Friend Status</Label>
-          {friendStatusArr.map((friendStat, index) => {
-            return (
-              <label>
-                <OptionsText>{friendStat}</OptionsText>
-                <input
-                  type="checkbox"
-                  // checked={item.selected}
-                  // onChange={() => this.changeHandler(index)}
-                />
-              </label>
-            );
-          })}
+          <div>
+            <Label>Friend Status</Label>
+            {friendStatusArr.map((friendStat, index) => {
+              return (
+                <label>
+                  <OptionsDiv>
+                    <OptionsText>{friendStat}</OptionsText>
+                    <input
+                      type="checkbox"
+                      // checked={item.selected}
+                      // onChange={() => this.changeHandler(index)}
+                    />
+                  </OptionsDiv>
+                </label>
+              );
+            })}
+          </div>
           <ApplyButton>Apply</ApplyButton>
         </OptionsContainer>
       </FlexContainer>

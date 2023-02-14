@@ -10,5 +10,5 @@ export type FriendType = {
   lastName: string;
   friendStatus: FriendStatus;
   email: string;
-  phoneNumber: number;
+  phoneNumber: string;
 };

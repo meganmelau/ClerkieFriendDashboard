@@ -7,7 +7,7 @@ const friends = [
       lastName: 'Lau',
       friendStatus: FriendStatus.SuperClose,
       email: 'megan.lau.contact@gmail.com',
-      phoneNumber: 6173048412
+      phoneNumber: '6173048412'
     },
     {
       id: 2,
@@ -15,7 +15,7 @@ const friends = [
       lastName: 'Doe',
       friendStatus: FriendStatus.Close,
       email: 'jane.doe@gmail.com',
-      phoneNumber: 6173225678
+      phoneNumber: '6173225678'
     },
     {
         id: 3,
@@ -23,7 +23,7 @@ const friends = [
         lastName: 'Smith',
         friendStatus: FriendStatus.None,
         email: 'bob.smith@gmail.com',
-        phoneNumber: 6173224000
+        phoneNumber: '6173224000'
       }
 ]
 
