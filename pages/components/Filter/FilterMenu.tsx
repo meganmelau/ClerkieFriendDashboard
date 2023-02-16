@@ -95,16 +95,15 @@ const CloseIcon = styled.img`
 
 type FilterMenuProps = {
   handleClose: () => void;
-  handleClear: () => void;
   handleApply: (newFilters: FriendStatus[]) => void;
 };
 // Cleanup: remove the type none and change to accept null so don't need to filter
 const FilterMenu: React.FC<FilterMenuProps> = ({
   handleClose,
-  handleClear,
   handleApply,
 }) => {
   const [inputFilterValues, setInputFilterValues] = useState([]);
+  const [selectedBoxes, setSelectedBoxes] = useState([]);
 
   const friendStatusArr = Object.values(FriendStatus).filter(
     (friendStat) => friendStat !== FriendStatus.None
@@ -113,9 +112,14 @@ const FilterMenu: React.FC<FilterMenuProps> = ({
   const handleCheckFilter = (event) => {
     console.log("handleCheckfilter", event.target.checked, event.target.value);
     if (event.target.checked) {
-      console.log(true);
+      // if checkbox is clicked --> save input value and checked value to state
+      setSelectedBoxes([...selectedBoxes, event.target.value]);
       setInputFilterValues([...inputFilterValues, event.target.value]);
     } else {
+      // unchecking condition
+      setSelectedBoxes(
+        selectedBoxes.filter((value) => value === event.target.value)
+      );
       setInputFilterValues(
         inputFilterValues.filter((value) => {
           value === event.target.value;
@@ -124,11 +128,16 @@ const FilterMenu: React.FC<FilterMenuProps> = ({
     }
   };
 
+  const handelClearFilter = () => {
+    setSelectedBoxes([]);
+    setInputFilterValues(Object.values(FriendStatus));
+  };
+
   return (
     <Menu>
       <FlexContainer>
         <FilterHeaderContainer>
-          <ClearAllButton hasFilters={false} handleClear={handleClear} />
+          <ClearAllButton hasFilters={false} handleClear={handelClearFilter} />
           <MenuHeader>Filter</MenuHeader>
           <CloseButton onClick={handleClose}>
             <CloseIcon src="close_icon.png" />
@@ -141,11 +150,12 @@ const FilterMenu: React.FC<FilterMenuProps> = ({
             {friendStatusArr.map((friendStat, index) => {
               return (
                 <label>
-                  <OptionsDiv>
+                  <OptionsDiv key={friendStat}>
                     <OptionsText>{friendStat}</OptionsText>
                     <input
                       type="checkbox"
                       value={friendStat}
+                      checked={selectedBoxes.includes(friendStat)}
                       onChange={(event) => handleCheckFilter(event)}
                     />
                   </OptionsDiv>
@@ -155,8 +165,6 @@ const FilterMenu: React.FC<FilterMenuProps> = ({
           </div>
           <ApplyButton
             onClick={() => {
-              // console.log("APPLY", inputFilterValues);
-              // setFilters(inputFilterValues);
               handleApply(inputFilterValues);
             }}
           >

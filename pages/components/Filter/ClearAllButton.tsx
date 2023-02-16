@@ -19,7 +19,6 @@ const ClearAllButton: React.FC<ClearAllButtonProps> = ({
   hasFilters,
   handleClear,
 }) => {
-  console.log(hasFilters);
   return (
     <div>
       <ClearButton onClick={handleClear}>{FriendPageStrings.clear}</ClearButton>

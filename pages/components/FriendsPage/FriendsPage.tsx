@@ -64,7 +64,7 @@ const FriendsPage: React.FC<FriendsPageProps> = ({ data }) => {
     setIsOpen(false);
   };
 
-  const closeFilterMenu = () => {
+  const handleClose = () => {
     return setIsOpen(false);
   };
 
@@ -72,6 +72,8 @@ const FriendsPage: React.FC<FriendsPageProps> = ({ data }) => {
     setFriendData(data);
   };
 
+  const hasFilters = filters.length > 0 && filters.length < 3;
+  console.log("hasFilters", hasFilters);
   return (
     <StyledContainer data-test-ids="FriendsPage">
       <HeaderBox>
@@ -80,20 +82,17 @@ const FriendsPage: React.FC<FriendsPageProps> = ({ data }) => {
       <StyledFriendsContainer>
         <FilterRow>
           <div>
-            <FilterButton onClick={handleClickFilterMenu} isOpen={isOpen} />
-            {isOpen && (
-              <FilterMenu
-                handleClose={closeFilterMenu}
-                handleClear={handleClear}
-                handleApply={handleApply}
-              />
-            )}
+            <FilterButton
+              onClick={handleClickFilterMenu}
+              isOpen={isOpen}
+              handleApply={handleApply}
+              handleClose={handleClose}
+              filters={filters}
+              hasFilters={hasFilters}
+            />
           </div>
           <DividerImg src="vertical_bar.png" />
-          <ClearAllButton
-            hasFilters={filters.length > 0}
-            handleClear={handleClear}
-          />
+          <ClearAllButton hasFilters={hasFilters} handleClear={handleClear} />
         </FilterRow>
         <FriendsListContainer friendsData={friendData} />
       </StyledFriendsContainer>
