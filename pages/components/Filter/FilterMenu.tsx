@@ -150,7 +150,7 @@ const FilterMenu: React.FC<FilterMenuProps> = ({
             {friendStatusArr.map((friendStat, index) => {
               return (
                 <label>
-                  <OptionsDiv key={friendStat}>
+                  <OptionsDiv key={friendStat + index}>
                     <OptionsText>{friendStat}</OptionsText>
                     <input
                       type="checkbox"
