@@ -1,6 +1,6 @@
 import { FriendStatus } from "./FriendType";
 
-const friends = [
+const friends_fetched = [
     {
       id: 11,
       firstName: 'Ginny',
@@ -82,4 +82,4 @@ const friends = [
     }
 ]
 
-export default friends;
+export default friends_fetched;

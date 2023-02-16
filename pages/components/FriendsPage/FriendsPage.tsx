@@ -4,7 +4,6 @@ import { FriendStatus, FriendType } from "../../data/FriendType";
 import FriendsListContainer from "./FriendsListContainer";
 import FilterButton from "../Filter/FilterButton";
 import { componentStrings } from "../strings";
-import FilterMenu from "../Filter/FilterMenu";
 import ClearAllButton from "../Filter/ClearAllButton";
 
 const FriendPageStrings = componentStrings.FriendsPage;
