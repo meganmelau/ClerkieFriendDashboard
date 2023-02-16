@@ -40,14 +40,46 @@ const DividerImg = styled.img`
 
 type FriendsPageProps = {
   data: FriendType[];
+  fetchedData: FriendType[];
 };
 
-const FriendsPage: React.FC<FriendsPageProps> = ({ data }) => {
+const FriendsPage: React.FC<FriendsPageProps> = ({ data, fetchedData }) => {
   const [loading, setloading] = useState(false);
   const [error, setError] = useState(false);
+  const [fetchMore, setFetchMote] = useState({});
   const [isOpen, setIsOpen] = useState(false);
   const [filters, setFilters] = useState(Object.values(FriendStatus));
   const [friendData, setFriendData] = useState<FriendType[]>(data);
+
+  const loadMoreFriends = () => {
+    // here normally I would call an api, I will simulate getting the data and updating state
+    console.log("fetchedData", fetchedData);
+    setFriendData((oldfriends) => [...oldfriends, ...fetchedData]);
+  };
+
+  const handleScroll = (event) => {
+    console.log(event.target.documentElement.scrollTop);
+    console.log(window.innerHeight);
+    console.log(event.target.documentElement.scrollHeight);
+    const scrollHeight = event.target.documentElement.scrollHeight;
+    const currentHeight = Math.ceil(
+      event.target.documentElement.scrollTop + window.innerHeight
+    );
+    if (currentHeight + 1 >= scrollHeight) {
+      console.log("at the bottom");
+      loadMoreFriends();
+    }
+  };
+
+  useEffect(() => {
+    // could add getting data on first render here
+    // tracking the scroll to bottom of page
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   useEffect(() => {
     const filteredData = data.filter((friend) => {
@@ -71,13 +103,14 @@ const FriendsPage: React.FC<FriendsPageProps> = ({ data }) => {
   };
 
   const handleClear = () => {
+    setFilters(Object.values(FriendStatus));
     setFriendData(data);
   };
 
   const hasFilters = filters.length > 0 && filters.length < 3;
 
   return (
-    <StyledContainer data-test-ids="FriendsPage">
+    <StyledContainer data-test-ids="FriendsPage" id="myDIV">
       <HeaderBox>
         <h2>{FriendPageStrings.friends}</h2>
       </HeaderBox>

@@ -3,6 +3,7 @@ import FriendsPage from "../pages/components/FriendsPage/FriendsPage";
 import Navbar from './components/NavBar/Navbar';
 import styled from "styled-components";
 import FriendsData from "./data/FriendsData";
+import FriendsDataFetched from './data/FriendsDataFetched';
 
 const StyledContainer = styled.body`
 display: flex;
@@ -24,7 +25,7 @@ export default function Home() {
         <main >
           <StyledContainer>
             <Navbar/>
-            <FriendsPage data={FriendsData}/>
+            <FriendsPage data={FriendsData} fetchedData={FriendsDataFetched} />
           </StyledContainer>
         </main>
       </body>
