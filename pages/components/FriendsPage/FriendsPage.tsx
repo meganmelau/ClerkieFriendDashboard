@@ -79,7 +79,7 @@ const FriendsPage: React.FC<FriendsPageProps> = ({ data, fetchedData }) => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [handleScroll]);
+  }, []);
 
   useEffect(() => {
     const filteredData = data.filter((friend) => {
