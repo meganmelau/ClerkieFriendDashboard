@@ -18,22 +18,22 @@ const friends = [
       phoneNumber: '5173225678'
     },
     {
-        id: 3,
-        firstName: 'Hermione',
-        lastName: 'Granger',
-        friendStatus: FriendStatus.SuperClose,
-        email: 'bob.smith@gmail.com',
-        phoneNumber: '4173224000'
+      id: 3,
+      firstName: 'Hermione',
+      lastName: 'Granger',
+      friendStatus: FriendStatus.SuperClose,
+      email: 'bob.smith@gmail.com',
+      phoneNumber: '4173224000'
     },
     {
-      id: 1,
+      id: 4,
       firstName: 'Ron',
       lastName: 'Weasely',
       friendStatus: FriendStatus.SuperClose,
       email: 'megan.lau.contact@gmail.com',
       phoneNumber: '9173048416'
     },{
-      id: 1,
+      id: 5,
       firstName: 'Neville',
       lastName: 'Longbottom',
       friendStatus: FriendStatus.Close,
@@ -41,7 +41,7 @@ const friends = [
       phoneNumber: '6173048412'
     },
     {
-      id: 2,
+      id: 6,
       firstName: 'Fred',
       lastName: 'Weasely',
       friendStatus: FriendStatus.Close,
@@ -49,15 +49,15 @@ const friends = [
       phoneNumber: '6153225678'
     },
     {
-        id: 3,
-        firstName: 'George',
-        lastName: 'Weasely',
-        friendStatus: FriendStatus.Close,
-        email: 'George.Weasely@gmail.com',
-        phoneNumber: '6177224000'
+      id: 7,
+      firstName: 'George',
+      lastName: 'Weasely',
+      friendStatus: FriendStatus.Close,
+      email: 'George.Weasely@gmail.com',
+      phoneNumber: '6177224000'
     },
     {
-      id: 2,
+      id: 8,
       firstName: 'Draco',
       lastName: 'Malfoy',
       friendStatus: FriendStatus.None,
@@ -65,12 +65,20 @@ const friends = [
       phoneNumber: '7173225671'
     },
     {
-        id: 3,
-        firstName: 'Lord',
-        lastName: 'Voldemort',
-        friendStatus: FriendStatus.None,
-        email: 'he.who.must.not.be.named@gmail.com',
-        phoneNumber: '8173124000'
+      id: 9,
+      firstName: 'Lord',
+      lastName: 'Voldemort',
+      friendStatus: FriendStatus.None,
+      email: 'he.who.must.not.be.named@gmail.com',
+      phoneNumber: '8173124000'
+    },
+    {
+      id: 10,
+      firstName: 'Bellatrix',
+      lastName: 'Lestrange',
+      friendStatus: FriendStatus.None,
+      email: 'bellatrixx@gmail.com',
+      phoneNumber: '8173124666'
     }
 ]
 

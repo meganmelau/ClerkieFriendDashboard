@@ -14,6 +14,7 @@ const StyledContainer = styled.div`
   flex-direction: column;
   flex-grow: 1;
   height: 100vh;
+  overflow-y: scroll;
 `;
 
 const StyledFriendsContainer = styled.div`
@@ -43,6 +44,8 @@ type FriendsPageProps = {
 };
 
 const FriendsPage: React.FC<FriendsPageProps> = ({ data }) => {
+  const [loading, setloading] = useState(false);
+  const [error, setError] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [filters, setFilters] = useState(Object.values(FriendStatus));
   const [friendData, setFriendData] = useState<FriendType[]>(data);
@@ -73,7 +76,7 @@ const FriendsPage: React.FC<FriendsPageProps> = ({ data }) => {
   };
 
   const hasFilters = filters.length > 0 && filters.length < 3;
-  console.log("hasFilters", hasFilters);
+
   return (
     <StyledContainer data-test-ids="FriendsPage">
       <HeaderBox>
