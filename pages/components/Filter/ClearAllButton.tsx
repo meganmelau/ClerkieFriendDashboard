@@ -12,13 +12,17 @@ const ClearButton = styled.button`
 
 type ClearAllButtonProps = {
   hasFilters: boolean;
+  handleClear: () => void;
 };
 
-const ClearAllButton: React.FC<ClearAllButtonProps> = ({ hasFilters }) => {
+const ClearAllButton: React.FC<ClearAllButtonProps> = ({
+  hasFilters,
+  handleClear,
+}) => {
   console.log(hasFilters);
   return (
     <div>
-      <ClearButton>{FriendPageStrings.clear}</ClearButton>
+      <ClearButton onClick={handleClear}>{FriendPageStrings.clear}</ClearButton>
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { colors } from "../StyleVariables";
 import { FriendStatus } from "../../data/FriendType";
@@ -9,6 +9,7 @@ const Menu = styled.div`=
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   border-radius: 6px;
   z-index: 2;
+  margin-top: 10px;
 `;
 
 const ApplyButton = styled.button`
@@ -92,19 +93,47 @@ const CloseIcon = styled.img`
   padding-top: 5px;
 `;
 
+type FilterMenuProps = {
+  handleClose: () => void;
+  handleClear: () => void;
+  handleApply: () => void;
+  setFilters: ([]) => void;
+};
 // Cleanup: remove the type none and change to accept null so don't need to filter
-const FilterMenu = () => {
+const FilterMenu: React.FC<FilterMenuProps> = ({
+  handleClose,
+  handleClear,
+  handleApply,
+  setFilters,
+}) => {
+  const [inputFilterValues, setInputFilterValues] = useState([]);
+
   const friendStatusArr = Object.values(FriendStatus).filter(
-    (friendStat) => friendStat != FriendStatus.None
+    (friendStat) => friendStat !== FriendStatus.None
   );
+
+  const handleCheckFilter = (event) => {
+    console.log("handleCheckfilter", event.target.checked, event.target.value);
+    if (event.target.checked) {
+      console.log(true);
+      setInputFilterValues([...inputFilterValues, event.target.value]);
+    } else {
+      setInputFilterValues(
+        // bug here fix later
+        inputFilterValues.filter((value) => {
+          value === event.target.value;
+        })
+      );
+    }
+  };
 
   return (
     <Menu>
       <FlexContainer>
         <FilterHeaderContainer>
-          <ClearAllButton hasFilters={false} />
+          <ClearAllButton hasFilters={false} handleClear={handleClear} />
           <MenuHeader>Filter</MenuHeader>
-          <CloseButton>
+          <CloseButton onClick={handleClose}>
             <CloseIcon src="close_icon.png" />
           </CloseButton>
         </FilterHeaderContainer>
@@ -119,15 +148,22 @@ const FilterMenu = () => {
                     <OptionsText>{friendStat}</OptionsText>
                     <input
                       type="checkbox"
-                      // checked={item.selected}
-                      // onChange={() => this.changeHandler(index)}
+                      value={friendStat}
+                      onChange={(event) => handleCheckFilter(event)}
                     />
                   </OptionsDiv>
                 </label>
               );
             })}
           </div>
-          <ApplyButton>Apply</ApplyButton>
+          <ApplyButton
+            onClick={() => {
+              console.log("APPLY", inputFilterValues);
+              setFilters(inputFilterValues);
+            }}
+          >
+            Apply
+          </ApplyButton>
         </OptionsContainer>
       </FlexContainer>
     </Menu>

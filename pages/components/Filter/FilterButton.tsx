@@ -19,9 +19,11 @@ type FilterButtonProps = {
   isOpen: boolean;
 };
 const FilterButton: React.FC<FilterButtonProps> = ({ onClick, isOpen }) => {
+  const iconVersion = isOpen ? "white_filter.png" : "filter_icon.png";
+
   return (
     <PillButton onClick={onClick} isOpen={isOpen}>
-      <FilterImg src="filter_icon.png" />
+      <FilterImg src={iconVersion} />
     </PillButton>
   );
 };

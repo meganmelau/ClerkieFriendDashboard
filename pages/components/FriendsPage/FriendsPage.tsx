@@ -44,9 +44,40 @@ type FriendsPageProps = {
 
 const FriendsPage: React.FC<FriendsPageProps> = ({ data }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [filters, setFilters] = useState([]);
+  const [friendData, setFriendData] = useState<FriendType[]>([]);
 
-  const HandleFilter = () => {
+  console.log("firends page FITLERS", filters);
+
+  const handleClickFilterMenu = () => {
     return setIsOpen(!isOpen);
+  };
+
+  const closeMenu = (value) => {
+    setFilters(value);
+  };
+
+  // clicking the apply button always closes it
+  const handleApply = () => {
+    // get the filters checked
+    const selectedFilters = [];
+    setFilters(selectedFilters);
+    setIsOpen(false);
+  };
+
+  const closeFilterMenu = () => {
+    return setIsOpen(false);
+  };
+
+  const handleClear = () => {
+    setFilters([]);
+  };
+
+  const filterData = () => {
+    const filteredData = data.filter((item) => {
+      return filters.includes(item.friendStatus);
+    });
+    return filteredData;
   };
 
   return (
@@ -57,11 +88,20 @@ const FriendsPage: React.FC<FriendsPageProps> = ({ data }) => {
       <StyledFriendsContainer>
         <FilterRow>
           <div>
-            <FilterButton onClick={HandleFilter} isOpen={isOpen} />
-            {isOpen && <FilterMenu />}
+            <FilterButton onClick={handleClickFilterMenu} isOpen={isOpen} />
+            {isOpen && (
+              <FilterMenu
+                handleClose={closeFilterMenu}
+                handleClear={handleClear}
+                setFilters={setFilters}
+              />
+            )}
           </div>
           <DividerImg src="vertical_bar.png" />
-          <ClearAllButton hasFilters={false} />
+          <ClearAllButton
+            hasFilters={filters.length > 0}
+            handleClear={handleClear}
+          />
         </FilterRow>
         <FriendsListContainer friendsData={data} />
       </StyledFriendsContainer>
