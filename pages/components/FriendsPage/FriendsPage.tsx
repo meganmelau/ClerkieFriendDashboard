@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { FriendType } from "../../data/FriendType";
+import { FriendStatus, FriendType } from "../../data/FriendType";
 import FriendsListContainer from "./FriendsListContainer";
 import FilterButton from "../Filter/FilterButton";
 import { componentStrings } from "../strings";
@@ -44,24 +44,23 @@ type FriendsPageProps = {
 
 const FriendsPage: React.FC<FriendsPageProps> = ({ data }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [filters, setFilters] = useState([]);
-  const [friendData, setFriendData] = useState<FriendType[]>([]);
+  const [filters, setFilters] = useState(Object.values(FriendStatus));
+  const [friendData, setFriendData] = useState<FriendType[]>(data);
 
-  console.log("firends page FITLERS", filters);
+  useEffect(() => {
+    const filteredData = data.filter((friend) => {
+      return filters.includes(friend.friendStatus);
+    });
+    setFriendData(filteredData);
+  }, [filters]);
 
   const handleClickFilterMenu = () => {
     return setIsOpen(!isOpen);
   };
 
-  const closeMenu = (value) => {
-    setFilters(value);
-  };
-
   // clicking the apply button always closes it
-  const handleApply = () => {
-    // get the filters checked
-    const selectedFilters = [];
-    setFilters(selectedFilters);
+  const handleApply = (newFilters) => {
+    setFilters(newFilters);
     setIsOpen(false);
   };
 
@@ -70,14 +69,7 @@ const FriendsPage: React.FC<FriendsPageProps> = ({ data }) => {
   };
 
   const handleClear = () => {
-    setFilters([]);
-  };
-
-  const filterData = () => {
-    const filteredData = data.filter((item) => {
-      return filters.includes(item.friendStatus);
-    });
-    return filteredData;
+    setFriendData(data);
   };
 
   return (
@@ -93,7 +85,7 @@ const FriendsPage: React.FC<FriendsPageProps> = ({ data }) => {
               <FilterMenu
                 handleClose={closeFilterMenu}
                 handleClear={handleClear}
-                setFilters={setFilters}
+                handleApply={handleApply}
               />
             )}
           </div>
@@ -103,7 +95,7 @@ const FriendsPage: React.FC<FriendsPageProps> = ({ data }) => {
             handleClear={handleClear}
           />
         </FilterRow>
-        <FriendsListContainer friendsData={data} />
+        <FriendsListContainer friendsData={friendData} />
       </StyledFriendsContainer>
     </StyledContainer>
   );

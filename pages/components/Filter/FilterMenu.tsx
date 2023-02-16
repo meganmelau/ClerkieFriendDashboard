@@ -47,8 +47,8 @@ const FilterHeaderContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
-  margin: 10px;
+  width: 90%;
+  margin-top: 10px;
 `;
 
 const Label = styled.div`
@@ -96,15 +96,13 @@ const CloseIcon = styled.img`
 type FilterMenuProps = {
   handleClose: () => void;
   handleClear: () => void;
-  handleApply: () => void;
-  setFilters: ([]) => void;
+  handleApply: (newFilters: FriendStatus[]) => void;
 };
 // Cleanup: remove the type none and change to accept null so don't need to filter
 const FilterMenu: React.FC<FilterMenuProps> = ({
   handleClose,
   handleClear,
   handleApply,
-  setFilters,
 }) => {
   const [inputFilterValues, setInputFilterValues] = useState([]);
 
@@ -119,7 +117,6 @@ const FilterMenu: React.FC<FilterMenuProps> = ({
       setInputFilterValues([...inputFilterValues, event.target.value]);
     } else {
       setInputFilterValues(
-        // bug here fix later
         inputFilterValues.filter((value) => {
           value === event.target.value;
         })
@@ -158,8 +155,9 @@ const FilterMenu: React.FC<FilterMenuProps> = ({
           </div>
           <ApplyButton
             onClick={() => {
-              console.log("APPLY", inputFilterValues);
-              setFilters(inputFilterValues);
+              // console.log("APPLY", inputFilterValues);
+              // setFilters(inputFilterValues);
+              handleApply(inputFilterValues);
             }}
           >
             Apply
