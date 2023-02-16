@@ -96,7 +96,7 @@ const CloseIcon = styled.img`
 type FilterMenuProps = {
   handleClose: () => void;
   handleClear: () => void;
-  handleApply: (newFilters: FriendStatus[]) => void;
+  handleApply: () => void;
   setFilters: ([]) => void;
 };
 // Cleanup: remove the type none and change to accept null so don't need to filter
@@ -159,8 +159,7 @@ const FilterMenu: React.FC<FilterMenuProps> = ({
           <ApplyButton
             onClick={() => {
               console.log("APPLY", inputFilterValues);
-              // setFilters(inputFilterValues);
-              handleApply(inputFilterValues);
+              setFilters(inputFilterValues);
             }}
           >
             Apply
