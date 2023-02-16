@@ -1,9 +1,9 @@
 import Head from 'next/head';
-import FriendsPage from "../pages/components/FriendsPage/FriendsPage";
-import Navbar from './components/NavBar/Navbar';
+import FriendsPage from "../components/FriendsPage/FriendsPage";
+import Navbar from "../components/NavBar/Navbar"
 import styled from "styled-components";
-import FriendsData from "./data/FriendsData";
-import FriendsDataFetched from './data/FriendsDataFetched';
+import FriendsData from "../data/FriendsData";
+import FriendsDataFetched from '../data/FriendsDataFetched';
 
 const StyledContainer = styled.body`
 display: flex;
